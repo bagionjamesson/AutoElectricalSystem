@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>AUTOMOTIVE SERVICING</title>
+  <link rel="icon" type="image/png" href="logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  
+  <!-- PDF.js library from CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.min.js"></script>
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="https://bagionjamesson.github.io/Home/" class="logo" style="text-decoration:none;">
+      <img src="logo.png" alt="AutoLearn PH Logo" />
+      <span class="logo-text">
+        <span class="auto">AUTO</span><span class="learn">LEARN</span><span class="ph">PH</span>
+      </span>
+    </a>
+    <button class="hamburger-menu" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links-list">
+      <span class="hamburger-bar"></span>
+      <span class="hamburger-bar"></span>
+      <span class="hamburger-bar"></span>
+    </button>
+    <ul class="nav-links" id="nav-links-list">
+      <li><a href="https://bagionjamesson.github.io/Home">Home</a></li>
+      <li><a href="https://bagionjamesson.github.io/Course">Course</a></li>
+      <li><a href="https://bagionjamesson.github.io/Resources">Resources</a></li>
+      <li><a href="https://bagionjamesson.github.io/About">About</a></li>
+    </ul>
+  </nav>
+
+  <section class="main-section">
+     <!-- Introduction Section -->
+    <section class="intro-section">
+      <div class="intro-content">
+        <h1 id="introTitle">Automotive Servicing</h1>
+        <p>
+          This Automotive Servicing course is designed to provide you with the essential knowledge and skills 
+          required for effective automotive repairs and maintenance. Learn everything from the proper use 
+          of automotive tools to interpreting technical plans and performing precise measurements.
+        </p>
+
+        <h2>What You Will Gain:</h2>
+        <ul>
+          <li><strong>Comprehensive Knowledge:</strong> Master automotive tools, measurements, diagnostics, and servicing procedures.</li>
+          <li><strong>Interactive Quizzes:</strong> Reinforce your learning and ensure understanding of critical concepts.</li>
+          <li><strong>Industry-Recognized Certification:</strong> Validate your skills in automotive servicing upon completion.</li>
+          <li><strong>Real-World Applications:</strong> Connect theory to practical skills, ensuring you're ready for real automotive tasks.</li>
+        </ul>
+
+        <p>
+          Start the Automotive Servicing module today and build the expertise needed to succeed in the fast-paced automotive industry!
+        </p>
+        <button id="showOutlineBtn" class="yellow-btn">Start</button>
+      </div>
+    </section>
+    <!-- PDF Viewer -->
+    <div class="pdf-viewer" id="pdfViewer" style="display:none;">
+      <div id="pdf-controls-top">
+        <button id="prev-page-top" title="Previous Page">Previous</button>
+        <span>Page <span id="page-num-top">1</span> of <span id="page-count-top">--</span></span>
+        <span class="pdf-controls-spacer"></span>
+        <button id="next-page-top" title="Next Page">Next</button>
+      </div>
+      <p id="pdf-status-message"></p>
+      <canvas id="pdf-canvas"></canvas>
+      <iframe id="form-viewer" style="display:none; width:100%; height:600px; border:none;"></iframe>
+      <div id="pdf-controls-bottom">
+        <button id="prev-page-bottom" title="Previous Page">Previous</button>
+        <span>Page <span id="page-num-bottom">1</span> of <span id="page-count-bottom">--</span></span>
+        <span class="pdf-controls-spacer"></span>
+        <button id="next-page-bottom" title="Next Page">Next</button>
+      </div>
+      <div class="pdf-viewer-actions">
+        <button class="nav-btn prev-btn" style="display:none;">
+          <span class="nav-label"></span>
+        </button>
+        <button class="nav-btn next-btn" style="display:none;">
+          <span class="nav-label"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Course Outline -->
+    <div class="course-outline" id="courseOutline">
+      <h1>Course Outline</h1>
+      <div class="course-sidebar">
+        <h3 class="unit-title"> AUTOMOTIVE SERVICING</h3>
+        <div class="lesson-item" data-pdf-src="lesson1.pdf">
+          <span class="lesson-title">Lesson 1: Use Hand Tools</span>
+          <span class="lesson-status"></span>
+        </div>
+        <div class="lesson-item" data-pdf-src="lesson2.pdf">
+          <span class="lesson-title">Lesson 2: Perform Mensuration and Calculations</span>
+          <span class="lesson-status"></span>
+        </div>
+        <div class="test-item test-highlight" data-pdf-src="quiz_after_lesson2.pdf">
+          <span class="test-title">Quiz 1</span>
+          <button class="take-test-btn">Take the Quiz</button>
+        </div>
+        <div class="lesson-item" data-pdf-src="lesson3.pdf">
+          <span class="lesson-title">Lesson 3: Interpret Plans and Drawings</span>
+          <span class="lesson-status"></span>
+        </div>
+        <div class="lesson-item" data-pdf-src="lesson4.pdf">
+          <span class="lesson-title">Lesson 4: Perform Shop Maintenance</span>
+          <span class="lesson-status"></span>
+        </div>
+        <div class="lesson-item" data-pdf-src="lesson5.pdf">
+          <span class="lesson-title">Lesson 5: Practice Occupational Health and Safety Procedures</span>
+          <span class="lesson-status"></span>
+        </div>
+        <div class="test-item test-highlight" data-pdf-src="quiz_after_lesson5.pdf">
+          <span class="test-title">Quiz 2</span>
+          <button class="take-test-btn">Take the Quiz</button>
+        </div>
+         <div class="evaluation-slot" id="course-eval-item" data-pdf-src="course_after_quiz">
+          <span class="test-title">Go to Course Evaluation and Get Certificate</span>
+          <button class="go-btn" id="goToCourseEvalBtn">Go</button>
+          
+        </div>
+
+      </div> <!-- End of .course-sidebar -->
+    </div>
+    
+  </section>
+<section>
+   <!-- Back to Course Outline button BELOW the PDF viewer -->
+    <div id="below-pdf-back-btn" style="display:none; margin: 24px 0;">
+      <div class="below-nav-flex">
+        <div class="below-nav-left">
+          <button class="nav-btn" id="belowPrevBtn" style="display:none;">
+            <span id="belowPrevLabel"></span>
+          </button>
+        </div>
+        <div class="below-nav-center">
+          <button id="belowBackToOutlineBtn" class="nav-btn back-to-outline-btn">
+            <i class="fas fa-arrow-left"></i> Back to Course Outline
+          </button>
+        </div>
+        <div class="below-nav-right">
+          <button class="nav-btn" id="belowNextBtn" style="display:none;">
+            <span id="belowNextLabel"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer class="footer">
+    <div class="footer-grid">
+      <div>
+        <h3>AutoLearn PH</h3>
+        <span class="footer-underline"></span>
+        <p>Your complete automotive learning companion designed for Filipino learners.Aligned with TESDA standards and industry best practices.</p>
+      </div>
+      <div>
+        <h3>Quick Links</h3>
+        <span class="footer-underline"></span>
+        <ul>
+          <li><a href="https://bagionjamesson.github.io/Home/">Home</a></li>
+          <li><a href="https://bagionjamesson.github.io/Course/">Course</a></li>
+          <li><a href="https://bagionjamesson.github.io/Resources/">Resources</a></li>
+          <li><a href="https://bagionjamesson.github.io/About/">About</a></li>
+        </ul>
+      </div>
+      <!-- Column 3: Learning Resources -->
+      <div>
+        <h3>Resources <span class="footer-underline"></span></h3>
+        <ul>
+          <li><a href="https://bagionjamesson.github.io/Resources/#DownloadModule" target="_blank">Downloadable Modules</a></li>
+          <li><a href="https://bagionjamesson.github.io/Resources/#LegitimateExternalResources" target="_blank"> Legitimate External Resources</a></li>
+          <li><a href="https://bagionjamesson.github.io/Resources/#HowToUse">Guide to Use Resources</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Contact Us <span class="footer-underline"></span></h3>
+        <div class="footer-contact">
+          <a href="mailto:contact@autolearn.ph" class="footer-social-link mail" aria-label="Email">
+            <svg class="footer-icon" width="20" height="20" fill="#FFD600" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 2v.01L12 13 4 6.01V6h16zM4 20v-9.99l7.99 7.99c.39.39 1.02.39 1.41 0L20 10.01V20H4z"/></svg>
+          </a>
+          bagionjamesson23@gmail.com
+        </div>
+        <div class="footer-contact">
+          <a href="tel:+639123456789" class="footer-social-link phone" aria-label="Phone">
+            <svg class="footer-icon" width="20" height="20" fill="#FFD600" viewBox="0 0 24 24"><path d="M6.62 10.79a15.053 15.053 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.07 21 3 13.93 3 5a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.46.57 3.58a1 1 0 0 1-.24 1.01l-2.2 2.2z"/></svg>
+          </a>
+          +63 912 345 6789
+        </div>
+        <div class="footer-contact">
+          <a href="https://goo.gl/maps/xyz" target="_blank" class="footer-social-link location" aria-label="Location">
+            <svg class="footer-icon" width="20" height="20" fill="#FFD600" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          </a>
+          Valenzuela City, Philippines
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <hr style="border: none; border-top: 1px solid #3b4e7a align:center;">
+      © 2025 AutoLearn PH / Bagion James Son. All rights reserved.
+    </div>
+  </footer>
+  <script src="main.js"></script>
+</body>
+</html>

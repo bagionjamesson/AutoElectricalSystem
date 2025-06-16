@@ -1,0 +1,1002 @@
+/* ==========================================================================
+   Global Styles
+   ========================================================================== */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f9f9f9;
+}
+
+/* ==========================================================================
+   Navbar
+   ========================================================================== */
+.navbar {
+  background: #285197;
+  padding: 0 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 56px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar .logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0 8px 4px;
+  user-select: none;
+  /* position: relative; /* Not needed here, parent .navbar is positioning context */
+}
+
+.navbar .logo img {
+  height: 32px;
+  width: 32px;
+  object-fit: contain;
+  border-radius: 0; /* No rounded corners, keep it square */
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  margin: 0;
+  display: block;
+}
+
+.navbar .logo-text {
+  font-family: 'Roboto', 'Arial', sans-serif;
+  font-size: 22px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+}
+
+/* AUTO is white, LEARN is yellow, no space between them */
+.logo-text .auto {
+  color: #fff;
+  font-weight: bold;
+}
+
+.logo-text .learn {
+  color: #ffc700;
+  font-weight: bold;
+  /* No margin, so it looks like one word */
+}
+
+/* PH is white, with a space before it */
+.logo-text .ph {
+  color: #fff;
+  font-family: 'Segoe UI', 'Arial', sans-serif;
+  font-weight: normal;
+  margin-left: 8px;
+  letter-spacing: 2px;
+  font-size: 22px;
+  text-transform: uppercase;
+  display: inline-block;
+  line-height: 1;
+  /* Ensures vertical alignment with AUTOLEARN */
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 2px;
+  padding: 0;
+  margin: 0;
+}
+
+.navbar ul li {
+  position: relative;
+}
+
+.navbar ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 15px;
+  padding: 10px 18px;
+  border-radius: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  font-weight: 500;
+  display: block;
+  transition: background 0.15s, color 0.15s;
+}
+
+.navbar ul li a:hover,
+.navbar ul li a.active {
+  background: #4666a3; /* Slight blue, matches reference site */
+  color: #ffffff;
+}
+
+.navbar ul li.dropdown > a::after {
+  content: " ▼";
+  font-size: 0.7em;
+  color: #4666a3; /* Gray triangle */
+  margin-left: 4px;
+}
+/* ==========================================================================
+   Mobile Navigation (Hamburger Menu)
+   ========================================================================== */
+
+/* Hamburger Menu Button */
+.hamburger-menu {
+  display: none; /* Hidden by default on larger screens */
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30px;
+  height: 25px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1001; /* Ensure it's above other navbar items if overlapping */
+  /* margin-left: 15px; /* Original: Give some space from the logo or other elements */
+  /* This will be controlled by margin-left: auto in the media query */
+}
+
+.hamburger-menu .hamburger-bar {
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: #fff; /* White bars for visibility on dark navbar */
+  border-radius: 3px;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Styles for .nav-links (the <ul>) for desktop are mostly covered by existing .navbar ul */
+/* Ensure .nav-links is used if you want to specifically target it */
+.navbar .nav-links {
+  list-style: none;
+  display: flex; /* This is for desktop view */
+  gap: 2px; /* From your existing .navbar ul */
+  padding: 0;
+  margin: 0;
+}
+
+
+/* Media Query for smaller screens (e.g., tablets and mobile) */
+/* You can adjust 768px to 700px if you want to use your existing breakpoint */
+@media (max-width: 768px) {
+  .navbar {
+    /* Ensure navbar stays as a row if you want logo and hamburger side-by-side */
+    /* If your 700px media query makes .navbar flex-direction: column, you might need to override it here
+       or adjust that rule. For logo and hamburger on one line: */
+    flex-direction: row;
+    align-items: center;
+    /* padding: 0 16px; /* Example padding for mobile */
+  }
+
+  /* Center the logo on mobile */
+  .navbar .logo {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1; /* Below hamburger (1001) and expanded menu (1000) */
+    padding: 0; /* Reset padding if transform handles all positioning */
+    margin-bottom: 0; /* Override any margin from other rules like the 700px one */
+  }
+
+  .navbar .nav-links {
+    display: none; /* Hide the links by default on small screens */
+    flex-direction: column;
+    width: 100%;
+    position: absolute;
+    top: 100%; /* Position below the navbar (assumes navbar height is its content height) */
+    /* If your navbar has a fixed height, e.g., 56px, you can use top: 56px; */
+    left: 0;
+    background-color: #fff; /* White background for the mobile menu dropdown */
+    padding: 10px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000; /* Ensure menu is above centered logo (z-index:1) but below hamburger's X (z-index:1001) if active */
+  }
+
+  .navbar .nav-links.active {
+    display: flex; /* Show the menu when active */
+  }
+
+  .navbar .nav-links li {
+    margin: 0;
+    width: 100%;
+    text-align: left; /* Or 'center' if you prefer */
+  }
+
+  .navbar .nav-links li a {
+    display: block;
+    padding: 12px 20px; /* Suitable padding for touch targets */
+    width: 100%;
+    color: #285197; /* Navbar blue for links on white background */
+    font-weight: 500; /* Consistent with desktop */
+    border-bottom: 1px solid #eee; /* Light separator for links */
+  }
+
+  .navbar .nav-links li:last-child a {
+    border-bottom: none;
+  }
+
+  .navbar .nav-links li a:hover,
+  .navbar .nav-links li a.active {
+    background-color: #f0f0f0; /* Light grey hover for white menu */
+    color: #285197; /* Keep link color on hover */
+  }
+
+  /* Dropdown menu adjustments for mobile, if you have dropdowns */
+  .navbar .nav-links li.dropdown .dropdown-menu {
+    position: static; /* Make dropdowns flow in the mobile menu */
+    box-shadow: none;
+    min-width: 100%;
+    background-color: #f8f8f8; /* Slightly different background for sub-menu */
+    border-top: 1px solid #eee;
+  }
+
+  .navbar .nav-links li.dropdown .dropdown-menu li a {
+    color: #285197; /* Consistent link color */
+    padding-left: 30px; /* Indent sub-menu items */
+  }
+  .navbar ul li.dropdown > a::after { /* Adjust dropdown arrow color for mobile if needed */
+    color: #285197; /* Match link color */
+  }
+
+
+  .hamburger-menu {
+    display: flex; /* Show the hamburger icon on small screens */
+    margin-left: auto; /* Push hamburger to the right, as logo is out of flow */
+  }
+
+  /* Animation for hamburger to "X" when active */
+  .hamburger-menu.active .hamburger-bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg); /* Adjust translate based on bar height/spacing */
+  }
+  .hamburger-menu.active .hamburger-bar:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger-menu.active .hamburger-bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg); /* Adjust translate */
+  }
+}
+
+
+.navbar ul li .dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 170px;
+  background: #4666a3; /* Slight blue dropdown background */
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  z-index: 200;
+  padding: 0;
+}
+
+.navbar ul li.dropdown:hover > .dropdown-menu,
+.navbar ul li.dropdown:focus-within > .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu li a {
+  color: #285197;
+  padding: 10px 18px;
+  border-radius: 0;
+  background: none;
+  font-size: 15px;
+  display: block;
+  font-weight: 500;
+  transition: background 0.15s, color 0.15s;
+}
+
+.dropdown-menu li a:hover {
+  background: #d0e3fa; /* Slightly deeper blue on hover */
+  color: #285197;
+}
+
+/* Responsive: stack menu on small screens */
+@media (max-width: 700px) {
+  .navbar { /* Keep navbar as a row, logo will be centered, hamburger on right */
+    /* flex-direction: column; */ /* REMOVED: This would stack logo and hamburger */
+    /* align-items: flex-start; */ /* REMOVED */
+    padding: 0 8px;
+  }
+  .navbar .logo {
+    /* margin-bottom: 8px; */ /* REMOVED: Logo is absolutely centered, no bottom margin needed here */
+  }
+  .navbar ul {
+    flex-direction: column;
+    width: 100%;
+  }
+  .navbar ul li {
+    width: 100%;
+  }
+  .navbar ul li a {
+    width: 100%;
+    padding: 12px 10px;
+    font-size: 16px;
+  }
+  .dropdown-menu {
+    position: static;
+    box-shadow: none;
+    min-width: 100%;
+  }
+}
+/* --- END NAVBAR --- */
+
+/* ==========================================================================
+   Main Section Layout
+   ========================================================================== */
+.main-section {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 40px 20px;
+  gap: 40px;
+  justify-content: center; /* This will center the flex items (content blocks) */
+  background-color: #b3c6e0;
+}
+
+/* ==========================================================================
+   PDF Viewer
+   ========================================================================== */
+.pdf-viewer {
+  flex: 1 1 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background: #f8f9fa;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  padding: 24px 0 32px 0;
+  margin: 0 auto;
+  max-width: 1200px;
+  width: 100%;
+  min-height: 75vh;
+}
+
+canvas#pdf-canvas {
+  display: none; /* Initially hidden, shown by JS */
+  width: 100%;
+  max-width: 900px;
+  height: auto;
+  max-height: 85vh;
+  margin: 0 auto;
+  border: 1px solid #e0e0e0;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+  object-fit: contain;
+  overflow: hidden; /* Ensures content within canvas respects border-radius */
+}
+
+@media (max-width: 1200px) {
+  .pdf-viewer {
+    max-width: 98vw;
+    padding: 12px 0 20px 0;
+  }
+  canvas#pdf-canvas {
+    max-width: 98vw;
+    max-height: 70vh;
+  }
+}
+
+@media (max-width: 700px) {
+  .pdf-viewer {
+    padding: 6px 0 10px 0;
+  }
+  canvas#pdf-canvas {
+    max-width: 100vw;
+    max-height: 55vh;
+  }
+}
+
+/* Hide scrollbars for iframe (if used for forms) */
+#form-viewer {
+  overflow: hidden !important;
+  border-radius: 8px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+}
+
+/* Hide toolbars and navigation panes for PDF.js viewer (if any are present in your HTML) */
+.pdf-viewer [class*="toolbar"],
+.pdf-viewer [class*="sidebar"],
+.pdf-viewer [class*="nav"] {
+  display: none !important;
+}
+#pdf-status-message {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+/* --- END PDF Viewer --- */
+
+/* ==========================================================================
+   Course Outline & Sidebar
+   ========================================================================== */
+.course-outline { /* Container for the entire course outline section including sidebar */
+  max-width: 700px;      /* Prevents the box from being too wide */
+  width: 100%;
+  margin: 32px auto 0 auto;
+  padding: 16px 18px 20px 18px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  min-height: 60vh;
+  word-break: break-word; /* Ensures long text wraps */
+  box-sizing: border-box;
+}
+.course-outline h1 {
+  font-size: 1.5rem;
+  margin-bottom: 12px;
+}
+
+/* Course Sidebar (within .course-outline or standalone if design changes) */
+.course-sidebar {
+  background-color: #f8f9fa;
+  padding: 10px 8px;
+  border-radius: 5px;
+  box-shadow: 0 0 6px rgba(0,0,0,0.03);
+  margin-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px; /* Compact but readable */
+}
+.course-sidebar > *:last-child {
+  margin-bottom: 0 !important;
+}
+.unit-title {
+  font-size: 1.08rem;
+  margin: 16px 0 6px 0;
+  font-weight: 600;
+  color: #285197;
+}
+
+/* General Item Styling (Lesson, Test, Evaluation) */
+.lesson-item,
+.test-item.test-highlight,
+.evaluation-slot {
+  flex-wrap: wrap; /* Allow content to wrap if too long */
+  word-break: break-word;
+  min-width: 0;
+}
+.lesson-item {
+  display: flex;
+  align-items: center;
+  padding: 7px 10px;
+  margin-bottom: 4px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.2s, color 0.2s;
+  border: 1px solid #e9ecef;
+  min-height: 36px;
+}
+.lesson-item:last-child,
+.test-item.test-highlight:last-child {
+  margin-bottom: 0;
+}
+.lesson-item:hover,
+.test-item.test-highlight:hover {
+  background-color: #f3f3f3;
+}
+
+
+
+
+/* Lesson Specific */
+.lesson-icon {
+  margin-right: 12px;
+  font-size: 1.1em;
+  width: 20px; /* Ensure alignment */
+  text-align: center;
+}
+.lesson-title {
+  flex-grow: 1;
+  font-size: 1rem; /* Combined from previous .lesson-title, .test-title */
+}
+.lesson-status {
+  font-size: 0.9em;
+  margin-left: 10px;
+  white-space: nowrap;
+}
+
+/* Test Item Specific */
+.test-item.test-highlight {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fffbe6;
+  border: 1px solid #ffe066;
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin: 8px 0;
+  font-weight: bold;
+  color: #b8860b;
+  box-shadow: 0 1px 3px rgba(255, 215, 0, 0.08);
+}
+.test-title {
+  flex-grow: 1;
+  font-size: 1rem; /* Combined from previous .lesson-title, .test-title */
+  letter-spacing: 1px;
+}
+.take-test-btn {
+  margin-left: 16px;
+  padding: 6px 18px;
+  background-color: #ffd600;
+  color: #333;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 0.97rem; /* From earlier definition */
+  transition: background 0.2s;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+  .take-test-btn:hover {
+  background-color: #ffe066;
+}
+
+/* Evaluation Specific */
+.evaluation-slot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #e6fff2; /* light green background */
+  border: 1.5px solid #43b66e; /* green border */
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin: 8px 0;
+  font-weight: bold;
+  color: #218c4a; /* dark green text */
+  box-shadow: 0 1px 3px rgba(67, 182, 110, 0.08);
+}
+.evaluation-slot .test-title { /* Reusing .test-title for consistency, but styled for evaluation */
+  font-size: 1rem;
+  letter-spacing: 1px;
+  color: #218c4a;
+}
+
+.go-btn { /* Button for "Go to Evaluation" or similar */
+  margin-left: 16px;
+  padding: 6px 22px;
+  background-color: #43b66e; /* Changed to green */
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: background 0.2s;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+.go-btn:hover {
+  background-color: #2e8b57;
+}
+.go-hint { /* Small hint text like "GO!" */
+  background: #43b66e;        /* Green background */
+  color: #fff;                /* White text */
+  border-radius: 12px;
+  padding: 2px 10px;
+  font-size: 0.95em;
+  font-weight: bold;
+  margin-left: 8px;
+  border: none;
+}
+
+/* Back Buttons related to Course Outline flow */
+.back-btn-container { /* General container for back buttons if needed */
+  display: flex;
+  justify-content: flex-start;
+  margin: 8px 0 0 0; /* Reduced from 24px to 8px */
+}
+.back-to-modules-btn {
+  display: flex;
+  align-items: center;
+  background: #fffbe6;
+  color: #b8860b;
+  border: 1px solid #ffe066;
+  border-radius: 20px;
+  padding: 8px 22px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(255, 215, 0, 0.08);
+  transition: background 0.2s, color 0.2s;
+  gap: 8px;
+  width: fit-content;
+  margin-top: 8px !important; /* Reduce if still too much space */
+}
+.back-to-modules-btn:hover {
+  background: #ffe066;
+  color: #856404;
+}
+/* --- END Course Outline & Sidebar --- */
+
+/* ==========================================================================
+   PDF Controls & Below-PDF Navigation
+   ========================================================================== */
+#pdf-controls-top,
+#pdf-controls-bottom {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 16px;
+  margin-bottom: 16px;
+  padding: 8px 0;
+  background: #f1f1f1;
+  border-bottom: 1px solid #ddd;
+}
+#pdf-controls-bottom {
+  border-bottom: none;
+  border-top: 1px solid #ddd;
+  margin-top: 16px;
+}
+#pdf-controls-top button,
+#pdf-controls-bottom button {
+  background-color: #285197;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 18px;
+  font-size: 22px;
+  font-family: inherit;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s, box-shadow 0.18s;
+  box-shadow: 0 2px 8px rgba(40,81,151,0.08);
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#pdf-controls-top button:hover,
+#pdf-controls-bottom button:hover {
+  background-color: #ffc107;
+  color: #222;
+}
+#pdf-controls-top button:active,
+#pdf-controls-bottom button:active {
+  background-color: #1d3c6a;
+  color: #fff;
+}
+#pdf-controls-top button:disabled,
+#pdf-controls-bottom button:disabled {
+  background-color: #b0b8c1;
+  color: #fff;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+#pdf-controls-top span,
+#pdf-controls-bottom span {
+  font-size: 16px;
+  color: #333;
+}
+.pdf-controls-spacer {
+  flex: 1;
+}
+
+/* Actions/Navigation below the PDF viewer */
+.pdf-viewer-actions { /* Container for buttons like Prev/Next Lesson, Back to Outline */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin: 18px auto 0 auto;
+}
+.nav-btn { /* General style for navigation buttons in .pdf-viewer-actions */
+  background: #fffbe6;
+  color: #b8860b;
+  border: 1px solid #ffe066;
+  border-radius: 20px;
+  padding: 8px 22px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(255, 215, 0, 0.08);
+  transition: background 0.2s, color 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.nav-btn:hover {
+  background: #ffe066;
+  color: #856404;
+}
+
+/* Alternative/Specific Below PDF Navigation Structure */
+.below-nav-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 48px; /* Increase this value for more space */
+  max-width: 700px;
+  margin: 0 auto;
+  width: 100%;
+}
+.below-nav-left,
+.below-nav-center,
+.below-nav-right {
+  flex: 0 1 auto;            /* Don't force full width, allow to shrink/grow a bit */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.below-nav-left, /* Optional: prevent buttons from stretching too wide */
+.below-nav-right {
+  min-width: 120px;
+  max-width: 220px;
+}
+.below-nav-center {
+  min-width: 220px;
+}
+#belowPrevBtn, /* Specific ID styles for buttons within .below-nav-flex */
+#belowBackToOutlineBtn,
+#belowNextBtn {
+  margin: 0 12px;
+}
+#belowPrevLabel,
+#belowNextLabel {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 180px; /* Adjust as needed */
+  display: inline-block;
+  vertical-align: middle;
+}
+#belowBackToOutlineBtn { /* Allow wrapping for the Back to Course Outline button */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 230px; /* Adjust as needed */
+  display: inline-block;
+  vertical-align: middle;
+}
+#below-pdf-back-btn { /* Another specific layout for below PDF buttons */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 304px; /* or 24px, adjust as needed */
+  flex-wrap: nowrap;
+}
+#belowPrevBtn, /* Ensure these are styled if used in #below-pdf-back-btn context */
+#belowBackToOutlineBtn,
+#courseEvalBtn { /* Assuming #courseEvalBtn is styled like other nav buttons or has its own style */
+  display: inline-block;
+  white-space: nowrap;
+  vertical-align: middle;
+  margin: 0;
+}
+/* --- END PDF Controls & Below-PDF Navigation --- */
+
+/* ====== SECTION 3: FOOTER ====== */
+.footer { /* Was .footer-section */
+  background: #285197; /* Darker background like live site */
+  color: #cccccc; /* Light gray fallback text color like live site */
+  padding: 48px 0 24px 0;
+  text-align: center;
+}
+.footer-grid { /* Was .footer-columns */
+  display: flex;
+  justify-content: center;
+  gap: 32px; /* Adjusted gap like live site (2rem) */
+  flex-wrap: wrap;
+  margin-bottom: 0;
+  padding-left: 20px; /* Add some padding to prevent content flush against edge */
+  padding-right: 20px;/* Add some padding to prevent content flush against edge */
+}
+.footer-grid > div { /* Was .footer-col, targets direct div children of .footer-grid */
+  min-width: 220px;
+  text-align: left;
+  flex: 1 1 0;
+  background: #285197; /* Card background like live site */
+  border-radius: 14px;  /* Live site card radius */
+  box-shadow: 0 4px 18px rgba(40,81,151,0.18); /* Live site card shadow */
+  padding: 24px 18px; /* Live site card padding */
+  margin: 0; /* Rely on parent gap for spacing */
+  color: #fff; /* Default text color for elements inside */
+}
+/* Removed .footer-col:hover as live site doesn't change these properties on hover */
+
+/* Styles for h3 within footer columns.
+   The .footer-header class is not used here as HTML structure is div > h3 */
+.footer-grid > div h3 {
+  color: #ffffff; /* Live site heading color */
+  font-size: 1.1em;
+  font-weight: 700;
+  margin-bottom: 12px;
+  position: relative;
+   display: inline-block; /* Important for positioning the underline span if it's a child */
+}
+.footer-grid > div ul { /* Was .footer-col ul */
+  list-style: none;
+  padding: 0;
+  margin: 0 0 12px 0;
+}
+.footer-grid > div ul li { /* Was .footer-col ul li */
+  margin-bottom: 10px;
+}
+.footer-grid > div ul li a { /* Was .footer-col ul li a */
+  color: #ffffff; /* Live site link color */
+  text-decoration: none;
+  font-size: 1em;
+  transition: color 0.2s;
+}
+.footer-grid > div ul li a:hover {
+  color: #FFD600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+/* Styles for contact paragraphs. Add class="footer-contact" to <p> tags in HTML for these to apply. */
+.footer-contact {
+  color: #ffffff; /* Live site contact text color */
+  font-size: 1em;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  
+}
+
+.footer-bottom {
+  text-align: center;
+  font-size: 0.98em; /* Was 0.9em, adjusted to new spec */
+  color: #b3c6e0;   /* Was #cccccc, adjusted to new spec */
+  margin-top: 0;    /* Was 20px for p, now for .footer-bottom */
+  padding-bottom: 18px; /* Was 20px, adjusted to new spec */
+}
+.footer-bottom hr { /* Style for the hr in footer bottom */
+    border: none;
+    border-top: 1px solid #3b4e7a; /* Color from new spec */
+    margin: 24px auto 12px auto; /* Margins from new spec, auto for horizontal centering */
+    width: 50%; /* Retaining width from previous step to keep it centered and not full-width */
+}
+.footer-bottom p { /* Styles for the copyright paragraph */
+  color: #b3c6e0;   /* Ensuring consistency if color was on .footer-bottom */
+  font-size: inherit; /* Inherit size from .footer-bottom */
+  margin-top: 12px; /* Space between hr and text, adjusted from hr's bottom margin */
+  margin-bottom: 0;
+}
+
+.footer-underline { /* This targets <span class="footer-underline"></span> */
+  display: block;
+  height: 3px;        /* Live site style */
+  width: 36px;        /* Live site style */
+  background: #FFD600;
+  border-radius: 2px;
+  margin-top: 4px;
+  margin-bottom: 16px;
+}
+/* Introduction Section Styles */
+
+.intro-section {
+  background-color: #f0f4f8; /* Light background for the intro */
+  padding: 50px 30px; /* Increased padding for more breathing room */
+  text-align: left;
+  border-radius: 12px; /* Slightly larger border radius */
+  margin-bottom: 30px; /* Increased bottom margin */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.06); /* Softer, slightly more pronounced shadow */
+}
+
+.intro-content {
+  max-width: 800px;
+  margin: 0 auto;
+  /* text-align: center; */ /* This is inherited from .intro-section, so direct children will be centered */
+}
+
+.intro-section h1 {
+  color: #2c3e50; /* A slightly more modern, darker blue-grey */
+  margin-bottom: 25px; /* Adjusted margin */
+  font-size: 2.5em;   /* Adjusted font size */
+  font-weight: 700;   /* Ensure strong heading weight */
+  line-height: 1.2;
+  text-align: center; /* Center the main heading */
+}
+
+.intro-section h2 {
+  color: #334155; /* Slightly softer than h1, but still strong */
+  font-size: 1.7em; /* Adjusted font size */
+  font-weight: 600;
+  margin-top: 35px; /* More space above H2 */
+  margin-bottom: 20px; /* Space between H2 and the list */
+  line-height: 1.3;
+}
+
+.intro-section p {
+  color: #4a5568; /* Softer, slightly desaturated grey for paragraph text */
+  line-height: 1.7; /* Increased line-height for better readability */
+  font-size: 1.1em; /* Adjusted paragraph font size */
+  margin-bottom: 20px; /* Consistent paragraph bottom margin */
+}
+
+.intro-section ul {
+  list-style: none; /* Remove default bullets */
+  padding-left: 0;  /* Remove default padding */
+  margin-top: 0;
+  margin-bottom: 25px; /* Space after the list */
+  text-align: left;    /* Align list items to the left */
+  display: inline-block; /* Allows the left-aligned list to be centered by parent's text-align: center */
+}
+
+/* Add more space below the last paragraph before the button */
+.intro-section .intro-content > p:last-of-type {
+  margin-bottom: 30px;
+}
+
+/* Styling for list items in the intro section */
+.intro-section li {
+  color: #4a5568; /* Consistent with paragraph text */
+  font-size: 1.05em; /* Adjusted list item font size */
+  line-height: 1.7;
+  margin-bottom: 12px; /* Space between list items */
+  padding-left: 30px;  /* Space for custom bullet */
+  position: relative;  /* For custom bullet positioning */
+}
+
+.intro-section li::before {
+  content: '✔'; /* Heavy check mark character */
+  color: #22c55e; /* A vibrant green for the checkmark */
+  position: absolute;
+  left: 0;
+  top: 2px; /* Adjust for vertical alignment with text */
+  font-size: 1.2em; /* Make checkmark slightly larger */
+  font-weight: bold;
+}
+
+/* ====== RESPONSIVE ====== */
+
+/* Specific styling for the intro button, enhancing .yellow-btn */
+#showOutlineBtn.yellow-btn {
+  display: block; /* Allow margin auto to work for centering */
+  width: fit-content; /* Make button only as wide as its content */
+  padding: 12px 25px; /* Adjusted padding for a slightly larger button */
+  font-size: 1.05em;  /* Slightly larger font for the button text */
+  border-radius: 6px; /* Consistent with other button styles or slightly more rounded */
+  font-weight: 600;
+  margin-top: 10px; /* Space above button */
+  margin-left: auto; /* Center the button */
+  margin-right: auto; /* Center the button */
+}
+@media (max-width: 900px) {
+  .intro-section h1 {
+    font-size: 2.0em; /* Adjust heading size for smaller screens */
+  }
+  .intro-section h2 {
+    font-size: 1.4em; /* Adjust H2 size for smaller screens */
+  }
+  .intro-section p {
+    font-size: 1.0em; /* Adjust paragraph size for smaller screens */
+  }
+  .intro-section li {
+    font-size: 0.95em; /* Adjust list item size for smaller screens */
+  }
+}
+
+@media (max-width: 900px) {
+  .footer-grid { /* Was .footer-columns */
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+  .footer-grid > div { /* Was .footer-col */
+    min-width: 0;
+    width: 90%; /* Give some space on sides */
+    max-width: 400px; /* Prevent them from becoming too wide */
+    margin-left: auto; /* Centering the column itself when stacked */
+    margin-right: auto; /* Centering the column itself when stacked */
+  }
+}
+
+/* ==========================================================================
+   Utility Button Styles
+   ========================================================================== */
+.yellow-btn {
+  background-color: #ffd600;
+  color: #222;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.yellow-btn:hover {
+  background-color: #ffe066;
+}
+/* --- END Utility Button Styles --- */
