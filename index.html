@@ -60,9 +60,15 @@
 
     <!-- Unit Introductions Container (Initially Hidden) -->
     <section id="unit-introductions-container" style="display:none;">
-      <div class="unit-introduction-content" id="unit1-intro">
-        <h2>Welcome to Unit 1: Electrical Fundamentals</h2>
-        <p>This unit will introduce you to the core concepts of automotive electrical systems, including basic circuits, components, and safety procedures. Understanding these fundamentals is crucial for diagnosing and repairing electrical issues in vehicles. You'll learn about hand tools, mensuration, technical drawings, and basic diagnostics.</p>
+      <div class="unit-introduction-content" id="unit1-intro"> 
+        
+        <!-- YouTube Video Player -->
+        <div class="youtube-video-container">
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/YOUR_YOUTUBE_VIDEO_ID_HERE" title="Course Introduction Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+        <!-- End YouTube Video Player -->
+
+
         <button class="start-unit-btn yellow-btn" data-target-item-id="unit1-pretest-item">Start Unit 1</button>
         <button class="unit-intro-back-btn nav-btn">Back to Course Outline</button>
       </div>
@@ -76,12 +82,6 @@
         <h2>Welcome to Unit 3: Electrical System Troubleshooting</h2>
         <p>This unit equips you with the skills to effectively troubleshoot complex electrical problems. You will learn systematic approaches to identify faults, interpret diagnostic data, and implement corrective actions for various electrical system malfunctions.</p>
         <button class="start-unit-btn yellow-btn" data-target-item-id="unit3-pretest-item">Start Unit 3</button>
-        <button class="unit-intro-back-btn nav-btn">Back to Course Outline</button>
-      </div>
-      <div class="unit-introduction-content" id="unit4-intro">
-        <h2>Welcome to Unit 4: Electrical System Maintenance</h2>
-        <p>Preventative maintenance is key to ensuring the longevity and reliability of automotive electrical systems. This unit covers routine maintenance procedures, inspection techniques, and best practices for keeping electrical components in optimal condition.</p>
-        <button class="start-unit-btn yellow-btn" data-target-item-id="unit4-pretest-item">Start Unit 4</button>
         <button class="unit-intro-back-btn nav-btn">Back to Course Outline</button>
       </div>
       <!-- Add more unit introductions here if needed -->
@@ -155,7 +155,7 @@
         <div class="lesson-item" data-pdf-src="lesson5.pdf">
           <span class="lesson-title">Lesson 5: Perform Electrical System Servicing</span>
           <span class="lesson-status"></span>
-        </div>
+        </div>  
         <div class="lesson-item" data-pdf-src="lesson6.pdf">
           <span class="lesson-title">Lesson 6: Perform Electrical System Repair</span>
           <span class="lesson-status"></span>
@@ -232,7 +232,7 @@
           <button class="take-test-btn">Take the Exam</button>
         </div>
 
-         <div class="evaluation-slot" id="course-eval-item" data-pdf-src="course_after_quiz">
+         <div class="evaluation-slot" id="course-eval-item" data-gform-src="https://forms.gle/rEmfBDVUC7wMe4xS9">
           <span class="test-title">Go to Course Evaluation and Get Certificate</span>
           <button class="go-btn" id="goToCourseEvalBtn">Go</button>
           
