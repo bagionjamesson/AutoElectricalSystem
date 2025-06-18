@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>AUTOMOTIVE SERVICING</title>
+  <title>Auto Electrical System</title>
   <link rel="icon" type="image/png" href="logo.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="style.css" />
@@ -36,7 +36,7 @@
      <!-- Introduction Section -->
     <section class="intro-section">
       <div class="intro-content">
-        <h1 id="introTitle">Automotive Servicing</h1>
+        <h1 id="introTitle"></h1>
         <p>
           This Automotive Servicing course is designed to provide you with the essential knowledge and skills 
           required for effective automotive repairs and maintenance. Learn everything from the proper use 
@@ -57,6 +57,38 @@
         <button id="showOutlineBtn" class="yellow-btn">Start</button>
       </div>
     </section>
+
+    <!-- Unit Introductions Container (Initially Hidden) -->
+    <section id="unit-introductions-container" style="display:none;">
+      <div class="unit-introduction-content" id="unit1-intro">
+        <h2>Welcome to Unit 1: Electrical Fundamentals</h2>
+        <p>This unit will introduce you to the core concepts of automotive electrical systems, including basic circuits, components, and safety procedures. Understanding these fundamentals is crucial for diagnosing and repairing electrical issues in vehicles. You'll learn about hand tools, mensuration, technical drawings, and basic diagnostics.</p>
+        <button class="start-unit-btn yellow-btn" data-target-item-id="unit1-pretest-item">Start Unit 1</button>
+        <button class="unit-intro-back-btn nav-btn">Back to Course Outline</button>
+      </div>
+      <div class="unit-introduction-content" id="unit2-intro">
+        <h2>Welcome to Unit 2: Electrical System Servicing</h2>
+        <p>Building on the fundamentals, this unit delves into practical servicing techniques for automotive electrical systems. You'll learn about performing electrical system servicing, repairs, maintenance, and testing procedures. This unit focuses on hands-on application of your knowledge.</p>
+        <button class="start-unit-btn yellow-btn" data-target-item-id="unit2-pretest-item">Start Unit 2</button>
+        <button class="unit-intro-back-btn nav-btn">Back to Course Outline</button>
+      </div>
+      <div class="unit-introduction-content" id="unit3-intro">
+        <h2>Welcome to Unit 3: Electrical System Troubleshooting</h2>
+        <p>This unit equips you with the skills to effectively troubleshoot complex electrical problems. You will learn systematic approaches to identify faults, interpret diagnostic data, and implement corrective actions for various electrical system malfunctions.</p>
+        <button class="start-unit-btn yellow-btn" data-target-item-id="unit3-pretest-item">Start Unit 3</button>
+        <button class="unit-intro-back-btn nav-btn">Back to Course Outline</button>
+      </div>
+      <div class="unit-introduction-content" id="unit4-intro">
+        <h2>Welcome to Unit 4: Electrical System Maintenance</h2>
+        <p>Preventative maintenance is key to ensuring the longevity and reliability of automotive electrical systems. This unit covers routine maintenance procedures, inspection techniques, and best practices for keeping electrical components in optimal condition.</p>
+        <button class="start-unit-btn yellow-btn" data-target-item-id="unit4-pretest-item">Start Unit 4</button>
+        <button class="unit-intro-back-btn nav-btn">Back to Course Outline</button>
+      </div>
+      <!-- Add more unit introductions here if needed -->
+    </section>
+
+
+
     <!-- PDF Viewer -->
     <div class="pdf-viewer" id="pdfViewer" style="display:none;">
       <div id="pdf-controls-top">
@@ -89,6 +121,11 @@
       <h1>Course Outline</h1>
       <div class="course-sidebar">
         <h3 class="unit-title"> AUTOMOTIVE SERVICING</h3>
+        <div class="unit-subtitle" data-unit-intro-id="unit1-intro">UNIT 1: ELECTRICAL FUNDAMENTALS</div>
+        <div class="test-item test-highlight" id="unit1-pretest-item" data-gform-src="https://forms.gle/qrHTZMT2BE9h8m8s5">
+          <span class="test-title">Pre-Test</span>
+          <button class="take-test-btn">Take the Pre-Test</button>
+        </div>
         <div class="lesson-item" data-pdf-src="lesson1.pdf">
           <span class="lesson-title">Lesson 1: Use Hand Tools</span>
           <span class="lesson-status"></span>
@@ -97,26 +134,104 @@
           <span class="lesson-title">Lesson 2: Perform Mensuration and Calculations</span>
           <span class="lesson-status"></span>
         </div>
-        <div class="test-item test-highlight" data-pdf-src="quiz_after_lesson2.pdf">
-          <span class="test-title">Quiz 1</span>
-          <button class="take-test-btn">Take the Quiz</button>
-        </div>
-        <div class="lesson-item" data-pdf-src="lesson3.pdf">
-          <span class="lesson-title">Lesson 3: Interpret Plans and Drawings</span>
+       <div class="lesson-item" data-pdf-src="lesson3.pdf">
+          <span class="lesson-title">Lesson 3: Interpret Technical Drawings</span>
           <span class="lesson-status"></span>
         </div>
         <div class="lesson-item" data-pdf-src="lesson4.pdf">
-          <span class="lesson-title">Lesson 4: Perform Shop Maintenance</span>
+          <span class="lesson-title">Lesson 4: Perform Electrical System Diagnostics</span>
           <span class="lesson-status"></span>
         </div>
+        <div class="test-item test-highlight" data-gform-src="YOUR_GFORM_URL_FOR_UNIT1_POST_TEST">
+          <span class="test-title">Post-Test</span>
+          <button class="take-test-btn">Take the Post-Test</button>
+        </div>
+        <div class="unit-subtitle" data-unit-intro-id="unit2-intro">UNIT 2: ELECTRICAL SYSTEM SERVICING</div>
+        
+        <div class="test-item test-highlight" id="unit2-pretest-item" data-gform-src="YOUR_GFORM_URL_FOR_UNIT2_PRE_TEST">
+          <span class="test-title">Pre-Test</span>
+          <button class="take-test-btn">Take the Pre-Test</button>
+      </div>
         <div class="lesson-item" data-pdf-src="lesson5.pdf">
-          <span class="lesson-title">Lesson 5: Practice Occupational Health and Safety Procedures</span>
+          <span class="lesson-title">Lesson 5: Perform Electrical System Servicing</span>
           <span class="lesson-status"></span>
         </div>
-        <div class="test-item test-highlight" data-pdf-src="quiz_after_lesson5.pdf">
-          <span class="test-title">Quiz 2</span>
-          <button class="take-test-btn">Take the Quiz</button>
+        <div class="lesson-item" data-pdf-src="lesson6.pdf">
+          <span class="lesson-title">Lesson 6: Perform Electrical System Repair</span>
+          <span class="lesson-status"></span>
         </div>
+      <div class="lesson-item" data-pdf-src="lesson7.pdf">
+          <span class="lesson-title">Lesson 7: Perform Electrical System Maintenance</span>
+          <span class="lesson-status"></span>
+      </div>
+      <div class="lesson-item" data-pdf-src="lesson8.pdf">
+          <span class="lesson-title">Lesson 8: Perform Electrical System Testing</span>
+          <span class="lesson-status"></span>
+      </div>
+      <div class="test-item test-highlight" data-gform-src="YOUR_GFORM_URL_FOR_UNIT2_POST_TEST">
+          <span class="test-title">Post-Test</span>
+          <button class="take-test-btn">Take the Post-Test</button>
+      </div>
+<div class="unit-subtitle" data-unit-intro-id="unit3-intro">UNIT 3: ELECTRICAL SYSTEM TROUBLESHOOTING</div>
+        <div class="test-item test-highlight" id="unit3-pretest-item" data-gform-src="YOUR_GFORM_URL_FOR_UNIT3_PRE_TEST">
+          <span class="test-title">Pre-Test</span>
+          <button class="take-test-btn">Take the Pre-Test</button>
+        </div>
+        <div class="lesson-item" data-pdf-src="lesson9.pdf">
+          <span class="lesson-title">Lesson 9: Perform Electrical System Troubleshooting</span>
+          <span class="lesson-status"></span>
+          </div>
+        <div class="lesson-item" data-pdf-src="lesson10.pdf">
+          <span class="lesson-title">Lesson 10: Perform Electrical System Repair</span>
+          <span class="lesson-status"></span>
+        </div>
+        <div class="lesson-item" data-pdf-src="lesson11.pdf">
+          <span class="lesson-title">Lesson 11: Perform Electrical System Maintenance</span>
+          <span class="lesson-status"></span>
+        </div>
+        <div class="lesson-item" data-pdf-src="lesson12.pdf">
+          <span class="lesson-title">Lesson 12: Perform Electrical System Testing</span>
+          <span class="lesson-status"></span>
+        </div>
+        <div class="test-item test-highlight" data-gform-src="YOUR_GFORM_URL_FOR_UNIT3_POST_TEST">
+          <span class="test-title">Post-Test</span>
+          <button class="take-test-btn">Take the Post-Test</button>
+        </div>
+<div class="unit-subtitle" data-unit-intro-id="unit4-intro">UNIT 4: ELECTRICAL SYSTEM MAINTENANCE</div>
+        <div class="test-item test-highlight" id="unit4-pretest-item" data-gform-src="YOUR_GFORM_URL_FOR_UNIT4_PRE_TEST">
+          <span class="test-title">Pre-Test</span>
+          <button class="take-test-btn">Take the Pre-Test</button>
+        </div>
+        <div class="lesson-item" data-pdf-src="lesson13.pdf">
+          <span class="lesson-title">Lesson 13: Perform Electrical System Maintenance</span>
+          <span class="lesson-status"></span>
+        </div>
+        <div class="lesson-item" data-pdf-src="lesson14.pdf">
+          <span class="lesson-title">Lesson 14: Perform Electrical System Repair</span>
+          <span class="lesson-status"></span>
+          </div>
+          <div class="lesson-item" data-pdf-src="lesson15.pdf">
+          <span class="lesson-title">Lesson 15: Perform Electrical System Testing</span>
+          <span class="lesson-status"></span>
+        </div>
+<div class ="lesson-item" data-pdf-src="lesson16.pdf">
+          <span class="lesson-title">Lesson 16: Perform Electrical System Diagnostics</span>
+          <span class="lesson-status"></span>
+          </div>
+  <div class="test-item test-highlight" data-gform-src="YOUR_GFORM_URL_FOR_UNIT4_POST_TEST">
+          <span class="test-title">Post-Test</span>
+          <button class="take-test-btn">Take the Post-Test</button>
+        </div>
+        <div class="test-item test-highlight" data-gform-src="YOUR_GFORM_URL_FOR_SUMMATIVE_EXAM">
+          <span class="test-title">Summative Exam</span>
+          <button class="take-test-btn">Take the Summative Exam</button>  
+        </div>
+  
+        <div class="test-item test-highlight" data-gform-src="YOUR_GFORM_URL_FOR_FINAL_EXAM">
+          <span class="test-title">Final Exam</span>
+          <button class="take-test-btn">Take the Exam</button>
+        </div>
+
          <div class="evaluation-slot" id="course-eval-item" data-pdf-src="course_after_quiz">
           <span class="test-title">Go to Course Evaluation and Get Certificate</span>
           <button class="go-btn" id="goToCourseEvalBtn">Go</button>
