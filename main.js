@@ -146,7 +146,7 @@ document.addEventListener('DOMContentLoaded', () => { // Consolidated DOMContent
     if (currentIndex > 0) {
         const prevItem = allNavigableItems[currentIndex - 1];
         belowPrevBtn.style.display = 'inline-block';
-        belowPrevLabel.textContent = '← ' + getItemTitle(prevItem);
+        belowPrevLabel.textContent = '← ' + getItemTitle(prevItem).split(':')[0].trim();
         belowPrevBtn.onclick = () => displayItemContent(currentIndex - 1);
     }
 
@@ -181,11 +181,14 @@ document.addEventListener('DOMContentLoaded', () => { // Consolidated DOMContent
 
         belowNextBtn.style.display = 'inline-block';
         if (nextActionIsUnitIntro) {
-            belowNextLabel.textContent = unitIntroTitle + ' →';
+            // Shorten the unit intro title (e.g., "Welcome to Unit 2: ... " becomes "Welcome to Unit 2")
+            const shortUnitIntroTitle = unitIntroTitle.split(':')[0].trim();
+            belowNextLabel.textContent = shortUnitIntroTitle + ' →';
             belowNextBtn.onclick = () => showUnitIntroductionView(unitIntroIdToShow);
         } else {
-            // Default behavior: go to the next item in allNavigableItems
-            belowNextLabel.textContent = getItemTitle(nextItemElement) + ' →';
+            // Shorten the default next item title (e.g., "Lesson 2: Explain..." becomes "Lesson 2")
+            const shortNextItemTitle = getItemTitle(nextItemElement).split(':')[0].trim();
+            belowNextLabel.textContent = shortNextItemTitle + ' →';
             belowNextBtn.onclick = () => displayItemContent(currentIndex + 1);
         }
     }
@@ -288,7 +291,7 @@ document.addEventListener('DOMContentLoaded', () => { // Consolidated DOMContent
 
   // Set the main introduction title
   if (introTitleElement) {
-    introTitleElement.textContent = 'Welcome to Automotive Servicing'; // You can change this text
+    introTitleElement.textContent = ''; // You can change this text
   }
 
   // Logic for the "Start" button in the intro section
