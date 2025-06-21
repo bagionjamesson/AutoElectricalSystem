@@ -173,17 +173,15 @@ document.addEventListener('DOMContentLoaded', () => { // Consolidated DOMContent
                 if (introDiv) { // Check if the intro div exists
                     nextActionIsUnitIntro = true;
                     unitIntroIdToShow = potentialIntroId;
-                    const introH2 = introDiv.querySelector('h2');
-                    if (introH2) unitIntroTitle = introH2.textContent.trim();
+                    // Set the button text to "Unit X" based on the extracted number
+                    unitIntroTitle = `Unit: ${unitNumber}`;
                 }
             }
         }
 
         belowNextBtn.style.display = 'inline-block';
         if (nextActionIsUnitIntro) {
-            // Shorten the unit intro title (e.g., "Welcome to Unit 2: ... " becomes "Welcome to Unit 2")
-            const shortUnitIntroTitle = unitIntroTitle.split(':')[0].trim();
-            belowNextLabel.textContent = shortUnitIntroTitle + ' →';
+            belowNextLabel.textContent = unitIntroTitle + ' →';
             belowNextBtn.onclick = () => showUnitIntroductionView(unitIntroIdToShow);
         } else {
             // Shorten the default next item title (e.g., "Lesson 2: Explain..." becomes "Lesson 2")
